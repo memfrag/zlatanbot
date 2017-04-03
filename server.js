@@ -502,7 +502,7 @@ slapp.message('update', ['mention', 'direct_message'], (msg) => {
         
         output += "```\n";
         
-        output += "10p for 1st, 5p for 2nd, 3p for 3rd, 1p for the rest.";
+        output += "10p for 1st, 5p for 2nd, 3p for 3rd, 1p for the rest.\n";
         
         msg.say(output);
     });
