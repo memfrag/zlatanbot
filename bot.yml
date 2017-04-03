@@ -4,5 +4,5 @@ avatar: .beepboop/avatar.png
 slackscopes:
   - bot
   - commands
-  - incoming-webhoo
+  - incoming-webhook
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
