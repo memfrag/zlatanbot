@@ -475,7 +475,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
-slapp.message('', ['mention', 'direct_message'], (msg) => {
+slapp.message('update', ['mention', 'direct_message'], (msg) => {
     updateScores(function (standings, scores) {
         
         var output = "```\n";
