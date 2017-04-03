@@ -5,4 +5,5 @@ slackscopes:
   - bot
   - commands
   - incoming-webhook
+  - chat:write:bot
 # To learn everything supported in the bot.yml file, visit https://beepboophq.com/docs/article/bot-yml
