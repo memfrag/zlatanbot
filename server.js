@@ -4,6 +4,8 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
+const pad = require('pad');
+const allsvenskan = require('allsvenskan.js')
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -32,6 +34,37 @@ I will respond to the following messages:
 // response to the user typing "help"
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
+})
+
+slapp.message('', ['mention', 'direct_message'], (msg) => {
+    allsvenskan.updateScores(function (standings, scores) {
+        
+        var output = "```\n";
+        
+        for (var i = 0; i < standings.length; i++) {
+            const entry = standings[i];
+            const position = pad(2, String(i + 1));
+            const teamName = pad(entry.name, 20);
+            const points = pad(2, String(entry.points));
+            output += position + ". " + teamName + "   " + points + " p";
+        }
+        
+        output +="```\n\n";
+        
+        output += "```\n"
+        
+        for (var i = 0; i < scores.length; i++) {
+            const entry = scores[i];
+            const position = pad(2, String(i + 1));
+            const person = pad(entry.person, 20);
+            const points = pad(2, String(entry.points));
+            output += position + ". " + person + "   " + points + " p";            
+        }
+        
+        output += "```";
+        
+        msg.say(output);
+    });
 })
 
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
