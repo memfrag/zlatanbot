@@ -485,7 +485,7 @@ slapp.message('update', ['mention', 'direct_message'], (msg) => {
             const position = pad(2, String(i + 1));
             const teamName = pad(entry.name, 20);
             const points = pad(2, String(entry.points));
-            output += position + ". " + teamName + "   " + points + " p";
+            output += position + ". " + teamName + "   " + points + "p\n";
         }
         
         output +="```\n\n";
@@ -497,10 +497,12 @@ slapp.message('update', ['mention', 'direct_message'], (msg) => {
             const position = pad(2, String(i + 1));
             const person = pad(entry.person, 20);
             const points = pad(2, String(entry.points));
-            output += position + ". " + person + "   " + points + " p";            
+            output += position + ". " + person + "   " + points + "p\n";            
         }
         
-        output += "```";
+        output += "```\n";
+        
+        output += "10p for 1st, 5p for 2nd, 3p for 3rd, 1p for the rest.";
         
         msg.say(output);
     });
