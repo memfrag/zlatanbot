@@ -513,6 +513,7 @@ slapp.message('picks (.*)', ['mention', 'direct_message'], (msg, text, name) => 
         
         if (!(name in picks)) {
             msg.say("Det som " + name + " gör med en fotboll kan jag göra med en apelsin.");
+            return;
         }
         const individualPicks = picks[name].picks;
         
