@@ -508,6 +508,28 @@ slapp.message('update', ['mention', 'direct_message'], (msg) => {
     });
 })
 
+slapp.message('picks (.*)', ['mention', 'direct_message'], (msg, text, name) => {
+    updateScores(function (standings, scores) {
+        
+        if (!(name in picks)) {
+            msg.say("Det som " + name + " gör med en fotboll kan jag göra med en apelsin.");
+        }
+        const individualPicks = picks[name].picks;
+        
+        var output = "```\n" + name + " har tippat så här:\n\n";
+        
+        for (var i = 0; i < individualPicks.length; i++) {
+            const position = pad(2, String(i + 1));
+            const teamName = individualPicks[i];
+            output += position + ". " + teamName + "\n";
+        }
+        
+        output +="```\n";
+                
+        msg.say(output);
+    });
+})
+
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
 slapp
   .message('^(hi|hello|hey)$', ['direct_mention', 'direct_message'], (msg, text) => {
