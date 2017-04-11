@@ -393,7 +393,7 @@ function roland_calculateScore(person, standings) {
 		const teamsBelowPickedTeam = individualPicks.slice(j);
 		for (var i = j; i < standings.length; i++) {
 			const team = standings[i];
-			if (teamsBelowPickedTeam.contains(team.name)) {
+			if (teamsBelowPickedTeam.includes(team.name)) {
 				score += 1;
 			}
 		}		
