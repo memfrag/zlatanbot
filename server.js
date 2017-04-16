@@ -502,7 +502,7 @@ slapp.message('update', ['mention', 'direct_message'], (msg) => {
             const position = pad(2, String(i + 1));
             const teamName = pad(entry.name, 20);
             const points = pad(2, String(entry.points));
-	    const gamesPlayer = pad(2, String(entry.gamesPlayed));
+	    const gamesPlayed = pad(2, String(entry.gamesPlayed));
             output += position + ". " + teamName + "   " + points + "p   " + gamesPlayed + " matcher\n";
         }
         
