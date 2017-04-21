@@ -400,7 +400,7 @@ function roland_calculateScore(person, standings) {
         
         const teamsBelowPickInStandings = standings.slice(pickIndexInStandings + 1);
         
-        const teamsInBoth += teamsBelowPickInStandings.filter(function (team) {
+        const teamsInBoth = teamsBelowPickInStandings.filter(function (team) {
             return picksBelowPick.includes(team.name)
         });
         
