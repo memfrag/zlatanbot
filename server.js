@@ -387,20 +387,29 @@ function linda_calculateScore(person, standings) {
 
 function roland_calculateScore(person, standings) {
     var score = 0;
-    const individualPicks = picks[person].picks;
+    const picksForPerson = picks[person].picks;
+
+    for (var p = 0; p < picksForPerson.length; p++) {
+        
+        const currentPick = picksForPerson[p];
+	const picksBelowPick = individualPicks.slice(p + 1);
+
+        const pickIndexInStandings = standings.findIndex(function (team) {
+            return team.name == currentPick;
+        });
+        
+        const teamsBelowPickInStandings = standings.slice(pickIndexInStandings + 1);
+        
+        const teamsInBoth += teamsBelowPickInStandings.filter(function (team) {
+            return picksBelowPick.includes(team.name)
+        });
+        
+        score += teamsInBoth.length;
+    }
 	
-	for (var j = 0; j < standings.length; j++) {
-		const teamsBelowPickedTeam = individualPicks.slice(j);
-		for (var i = j; i < standings.length; i++) {
-			const team = standings[i];
-			if (teamsBelowPickedTeam.includes(team.name)) {
-				score += 1;
-			}
-		}		
-	}
-	
-	return score;
+    return score;
 }
+
 
 function calculateScores(standings) {
     var scores = [];
