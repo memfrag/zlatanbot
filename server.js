@@ -392,7 +392,7 @@ function roland_calculateScore(person, standings) {
     for (var p = 0; p < picksForPerson.length; p++) {
         
         const currentPick = picksForPerson[p];
-	const picksBelowPick = individualPicks.slice(p + 1);
+	const picksBelowPick = picksForPerson.slice(p + 1);
 
         const pickIndexInStandings = standings.findIndex(function (team) {
             return team.name == currentPick;
