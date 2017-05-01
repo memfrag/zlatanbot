@@ -385,6 +385,31 @@ function linda_calculateScore(person, standings) {
     return score;
 }
 
+function scoresForPicks(person, standings) {
+    var scores = [];
+    const picksForPerson = picks[person].picks;
+
+    for (var p = 0; p < picksForPerson.length; p++) {
+        
+        const currentPick = picksForPerson[p];
+        const picksBelowPick = picksForPerson.slice(p + 1);
+
+        const pickIndexInStandings = standings.findIndex(function (team) {
+            return team.name == currentPick;
+        });
+        
+        const teamsBelowPickInStandings = standings.slice(pickIndexInStandings + 1);
+        
+        const teamsInBoth = teamsBelowPickInStandings.filter(function (team) {
+            return picksBelowPick.includes(team.name)
+        });
+        
+        scores.push(teamsInBoth.length);
+    }
+	
+    return scores;
+}
+
 function roland_calculateScore(person, standings) {
     var score = 0;
     const picksForPerson = picks[person].picks;
