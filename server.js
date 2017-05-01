@@ -385,14 +385,13 @@ function linda_calculateScore(person, standings) {
     return score;
 }
 
-function scoresForPicks(person, standings) {
+function scoresForPicks(picks, standings) {
     var scores = [];
-    const picksForPerson = picks[person].picks;
 
-    for (var p = 0; p < picksForPerson.length; p++) {
+    for (var p = 0; p < picks.length; p++) {
         
-        const currentPick = picksForPerson[p];
-        const picksBelowPick = picksForPerson.slice(p + 1);
+        const currentPick = picks[p];
+        const picksBelowPick = picks.slice(p + 1);
 
         const pickIndexInStandings = standings.findIndex(function (team) {
             return team.name == currentPick;
@@ -567,12 +566,15 @@ slapp.message('picks (.*)', ['mention', 'direct_message'], (msg, text, name) => 
         }
         const individualPicks = picks[name].picks;
         
+        var scores = scoresForPicks(individualPicks, standings);
+        
         var output = "```\n" + name + " har tippat så här:\n\n";
         
         for (var i = 0; i < individualPicks.length; i++) {
             const position = pad(2, String(i + 1));
             const teamName = individualPicks[i];
-            output += position + ". " + teamName + "\n";
+            const pointsForPick = scores[i];
+            output += pad(position + ". " + teamName, 25) + "(" + pad(2, String(pointsForPick)) + "p)\n";
         }
         
         output +="```\n";
