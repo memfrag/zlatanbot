@@ -603,7 +603,7 @@ slapp.message('picks (.*)', ['mention', 'direct_message'], (msg, text, name) => 
 slapp.message('fpl', ['mention', 'direct_message'], (msg) => {
     updateFantasyPremierLeague(function (standings) {
         
-        var output = "```\n";
+        var output = "```\nFantasy Premier League\n\n";
 		
 		for (var i = 0; i < standings.length; i++) {
             const position = pad(2, String(i + 1));
@@ -611,7 +611,7 @@ slapp.message('fpl', ['mention', 'direct_message'], (msg) => {
 			const teamName = entry.entry_name;
 			const playerName = entry.play;
 			const points = entry.total;
-			output += pad(position + ". " + teamName, 25) + "(" + pad(2, String(points)) + "p)\n";
+			output += pad(position + ". " + teamName, 25) + " " + pad(playerName, 20) + " " + pad(2, String(points)) + "p\n";
 		}
                 
         output += "```\n";
