@@ -503,8 +503,8 @@ function updateFantasyPremierLeague(completionFunction) {
             console.log("");
 
 			try {
-				const standings = JSON.parse(body);
-				completionFunction(standings);
+				const json = JSON.parse(body);
+				completionFunction(json.standings.result);
 			} catch (e) {
 		        console.log("ERROR: Failed to parse fantasy premier league json");
 			}
