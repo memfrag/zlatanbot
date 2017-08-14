@@ -495,6 +495,26 @@ function updateScores(completionFunction) {
     });
 }
 
+function updateFantasyPremierLeague(completionFunction) {
+    request(url, function (error, response, body) {
+        if (!error) {
+
+            console.log("");
+
+			try {
+				const standings = JSON.parse(body);
+				completionFunction(standings);
+			} catch (e) {
+		        console.log("ERROR: Failed to parse fantasy premier league json");
+			}
+        
+            console.log("");
+                            
+        } else {
+            console.log("Error: " + error)
+        }
+    });
+}
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -578,6 +598,26 @@ slapp.message('picks (.*)', ['mention', 'direct_message'], (msg, text, name) => 
         }
         
         output +="```\n";
+                
+        msg.say(output);
+    });
+})
+
+slapp.message('fpl', ['mention', 'direct_message'], (msg) => {
+    updateFantasyPremierLeague(function (standings) {
+        
+        var output = "```\n";
+		
+		for (var i = 0; i < standings.length; i++) {
+            const position = pad(2, String(i + 1));
+			const entry = standings[i];
+			const teamName = entry.entry_name;
+			const playerName = entry.play;
+			const points = entry.total;
+			output += pad(position + ". " + teamName, 25) + "(" + pad(2, String(points)) + "p)\n";
+		}
+                
+        output += "```\n";
                 
         msg.say(output);
     });
