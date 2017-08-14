@@ -10,6 +10,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 const url = "http://svenskfotboll.se/allsvenskan/tabell-och-resultat/";
+const fantasyPremierLeagueURL = "https://fantasy.premierleague.com/drf/leagues-classic-standings/706306?phase=1&le-page=1&ls-page=1";
 
 const aik = "AIK";
 const eskilstuna = "Athletic Eskilstuna";
@@ -496,7 +497,7 @@ function updateScores(completionFunction) {
 }
 
 function updateFantasyPremierLeague(completionFunction) {
-    request(url, function (error, response, body) {
+    request(fantasyPremierLeagueURL, function (error, response, body) {
         if (!error) {
 
             console.log("");
