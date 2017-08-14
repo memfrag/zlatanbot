@@ -609,7 +609,7 @@ slapp.message('fpl', ['mention', 'direct_message'], (msg) => {
             const position = pad(2, String(i + 1));
 			const entry = standings[i];
 			const teamName = entry.entry_name;
-			const playerName = entry.play;
+			const playerName = entry.player_name;
 			const points = entry.total;
 			output += pad(position + ". " + teamName, 25) + " " + pad(playerName, 20) + " " + pad(2, String(points)) + "p\n";
 		}
