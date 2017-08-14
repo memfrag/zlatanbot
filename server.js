@@ -502,10 +502,8 @@ function updateFantasyPremierLeague(completionFunction) {
 
             console.log("");
 
-			console.log(body);
 			const jsonData = JSON.parse(body);
-			console.log(jsonData);
-			completionFunction(jsonData.standings.result);
+			completionFunction(jsonData.standings.results);
         
             console.log("");
                             
