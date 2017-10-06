@@ -60,6 +60,6 @@ function makeNHLStandings(records) {
     output += "```\n";
             
     return output;
-});
+}
 
 exports.updateNHLStandings = updateNHLStandings;
