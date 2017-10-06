@@ -56,7 +56,7 @@ function makeNHLStandings(records) {
 		return a.rank - b.rank;
 	});
 	
-	output += pad("WESTERN CONFERENCE", 25) + "    EASTERN CONFERENCE\n\n";
+	output += pad("WESTERN CONFERENCE", 25) + "         EASTERN CONFERENCE\n\n";
 	
 	for (var i = 0; i < 16; i++) {
 		const position = pad(2, String(i + 1));
