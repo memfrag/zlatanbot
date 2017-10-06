@@ -624,7 +624,7 @@ slapp.message('fpl', ['mention', 'direct_message'], (msg) => {
 
 
 slapp.message('nhl', ['mention', 'direct_message'], (msg) => {
-	msg.say("Fetching NHL stats...");
+	msg.say("OK, jag hämtar NHL standings, vänta...");
 	nhl.updateNHLStandings(function (standings) {
 		msg.say("TEST NHL STANDINGS!!!");
         msg.say(standings);
