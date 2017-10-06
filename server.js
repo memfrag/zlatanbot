@@ -9,6 +9,8 @@ const pad = require('pad');
 var request = require('request');
 var cheerio = require('cheerio');
 
+const nhl = require('./nhl')
+
 const url = "http://svenskfotboll.se/allsvenskan/tabell-och-resultat/";
 const fantasyPremierLeagueURL = "https://fantasy.premierleague.com/drf/leagues-classic-standings/706306?phase=1&le-page=1&ls-page=1";
 
@@ -617,6 +619,13 @@ slapp.message('fpl', ['mention', 'direct_message'], (msg) => {
         output += "```\n";
                 
         msg.say(output);
+    });
+})
+
+
+slapp.message('nhl', ['mention', 'direct_message'], (msg) => {
+	updateNHLStandings(function (standings) {
+        msg.say(standings);
     });
 })
 
