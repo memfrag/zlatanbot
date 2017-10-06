@@ -26,7 +26,7 @@ function updateNHLStandings(completion) {
 
 function makeNHLStandings(records) {
     
-    var output = "```\n:nhl: NHL Standings\n\n";
+    var output = "```\nNHL Standings\n\n";
 	
 	var conferences = {
 		"Eastern": [],
@@ -46,6 +46,13 @@ function makeNHLStandings(records) {
 			});
 		} 
 	}
+	
+	conferences["Eastern"].sort(function(a, b) {
+		return a.rank - b.rank;
+	});
+	conferences["Western"].sort(function(a, b) {
+		return a.rank - b.rank;
+	});
 	
 	output += pad(" WESTERN CONFERENCE", 25) + "     EASTERN CONFERENCE\n\n";
 	
