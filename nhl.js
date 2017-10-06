@@ -18,14 +18,15 @@ function updateNHLStandings(completion) {
                         
 			completion(standings);   
         } else {
-            console.log("Error: " + error)
+            console.log("Error: " + error);
+			completion("Det sket sig. :-( " + error);
         }
     });
 }
 
 function makeNHLStandings(records) {
     
-    var output = "```\nNHL\n\n";
+    var output = "```\nNHL Standings\n\n";
 	
 	var conferences = {
 		"Eastern": [],
@@ -46,14 +47,16 @@ function makeNHLStandings(records) {
 		} 
 	}
 	
+	output += pad("    WESTERN", 25) + "        EASTERN\n\n";
+	
 	for (var i = 0; i < 16; i++) {
 		const position = pad(2, String(i + 1));
-		const easternTeam = conferences["Eastern"][i];
-		output += pad(position + ". " + easternTeam.name, 25);
 		if (i < 15) {
 			const westernTeam = conferences["Western"][i];
 			output += "    " + pad(position + ". " + westernTeam.name, 25);
 		}
+		const easternTeam = conferences["Eastern"][i];
+		output += pad(position + ". " + easternTeam.name, 25);
 		
 		output += "\n";
 	}
