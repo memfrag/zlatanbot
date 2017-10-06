@@ -26,7 +26,7 @@ function updateNHLStandings(completion) {
 
 function makeNHLStandings(records) {
     
-    var output = "```\nNHL Standings\n\n";
+    var output = "```\n:nhl: NHL Standings\n\n";
 	
 	var conferences = {
 		"Eastern": [],
@@ -47,7 +47,7 @@ function makeNHLStandings(records) {
 		} 
 	}
 	
-	output += pad("    WESTERN", 25) + "        EASTERN\n\n";
+	output += pad(" WESTERN CONFERENCE", 25) + "     EASTERN CONFERENCE\n\n";
 	
 	for (var i = 0; i < 16; i++) {
 		const position = pad(2, String(i + 1));
