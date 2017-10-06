@@ -40,9 +40,11 @@ function makeNHLStandings(records) {
 			const teamRecord = record.teamRecords[t];
 			const teamName = teamRecord.team.name;
 			const conferenceRank = teamRecord.conferenceRank;
+			const points = teamRecord.points;
 			conferences[conferenceName].push({
 				name: teamName,
-				rank: conferenceRank
+				rank: conferenceRank,
+				points: points
 			});
 		} 
 	}
@@ -54,18 +56,18 @@ function makeNHLStandings(records) {
 		return a.rank - b.rank;
 	});
 	
-	output += pad(" WESTERN CONFERENCE", 25) + "     EASTERN CONFERENCE\n\n";
+	output += pad("WESTERN CONFERENCE", 25) + "    EASTERN CONFERENCE\n\n";
 	
 	for (var i = 0; i < 16; i++) {
 		const position = pad(2, String(i + 1));
 		if (i < 15) {
 			const westernTeam = conferences["Western"][i];
-			output += pad(position + ". " + westernTeam.name, 25);
+			output += pad(position + ". " + westernTeam.name, 25) + " " + westernTeam.points + "p";
 		} else {
 			output += pad(" ", 25);
 		}
 		const easternTeam = conferences["Eastern"][i];
-		output += "    " + pad(position + ". " + easternTeam.name, 25);
+		output += "    " + pad(position + ". " + easternTeam.name, 25) + " " + easternTeam.points + "p";
 		
 		output += "\n";
 	}
