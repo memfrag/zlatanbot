@@ -62,12 +62,12 @@ function makeNHLStandings(records) {
 		const position = pad(2, String(i + 1));
 		if (i < 15) {
 			const westernTeam = conferences["Western"][i];
-			output += pad(position + ". " + westernTeam.name, 25) + " " + westernTeam.points + "p";
+			output += pad(position + ". " + westernTeam.name, 25) + pad(" " + westernTeam.points + "p", 5);
 		} else {
-			output += pad(" ", 25);
+			output += pad(" ", 30);
 		}
 		const easternTeam = conferences["Eastern"][i];
-		output += "    " + pad(position + ". " + easternTeam.name, 25) + " " + easternTeam.points + "p";
+		output += "    " + pad(position + ". " + easternTeam.name, 25) + pad(" " + easternTeam.points + "p", 5);
 		
 		output += "\n";
 	}
