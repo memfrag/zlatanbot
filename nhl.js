@@ -205,7 +205,7 @@ function calculateConferenceScore(picksForPerson, standings) {
     return score;
 }
 
-function makeNHLStandings(records) {
+function makeNHLScores(records) {
     
     var output = "```\nNHL Picks\n\n";
 	
