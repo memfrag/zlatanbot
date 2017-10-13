@@ -207,7 +207,7 @@ function calculateConferenceScore(picksForPerson, standings) {
 
 function makeNHLScores(records) {
     
-    var output = "```\nNHL Picks\n\n";
+    var output = "```\nBontouch NHL Picks\n\n";
 	
 	var conferences = {
 		"Eastern": [],
