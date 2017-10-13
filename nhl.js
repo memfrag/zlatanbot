@@ -240,8 +240,11 @@ function makeNHLScores(records) {
     var scores = calculateScores(conferences);
     
     for (var i = 0; i < scores.length; i++) {
-        const score = scores[i];
-        output += ((i + 1) + ". " + score.person + " " + score.points + " p\n");
+        const entry = scores[i];
+        const position = pad(2, String(i + 1));
+        const person = pad(entry.person, 20);
+        const points = pad(2, String(entry.points));
+        output += position + ". " + person + "   " + points + "p\n";
     }
 	            
     output += "```\n";
