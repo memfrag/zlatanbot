@@ -241,7 +241,7 @@ function makeNHLScores(records) {
     
     for (var i = 0; i < scores.length; i++) {
         const score = scores[i];
-        output += ((i + 1) + ". " + score.person + " " + score.points + " p");
+        output += ((i + 1) + ". " + score.person + " " + score.points + " p\n");
     }
 	            
     output += "```\n";
