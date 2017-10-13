@@ -181,7 +181,7 @@ function calculateScore(person, standings) {
     return score;
 }
 
-function calculateScoreConference(picksForPerson, standings) {
+function calculateConferenceScore(picksForPerson, standings) {
     var score = 0;
 
     for (var p = 0; p < picksForPerson.length; p++) {
