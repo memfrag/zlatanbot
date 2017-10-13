@@ -176,7 +176,7 @@ function calculateScores(standings) {
 function calculateScore(person, standings) {
     var score = 0;
     const picksForPerson = picks[person];
-    score += calculateConferenceScore(picksForPerson.eastern, standings["Easterin"]);
+    score += calculateConferenceScore(picksForPerson.eastern, standings["Eastern"]);
     score += calculateConferenceScore(picksForPerson.western, standings["Western"]);
     return score;
 }
