@@ -628,7 +628,7 @@ slapp.message('nhl', ['mention', 'direct_message'], (msg) => {
 	nhl.updateNHLStandings(function (standings, scores) {
         msg.say(standings);
         msg.say(scores);
-        msg.say("Jämför picks här: https://memfrag.github.io/nhl/picks.html");
+        msg.say("Jämför picks här: http://memfrag.se/picks/picks.html");
     });
 })
 
